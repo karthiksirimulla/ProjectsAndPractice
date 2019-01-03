@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	
+	<bean id="jungle" class="com.cave.part3.Jungle">
+
+	<property name="foods">
+		<props>
+			<prop key="light">Leaves</prop>
+			<prop key="moderate">Eggs</prop>
+			<prop key="heavy">Meat</prop>
+		</props>
+	</property>
+	<property name="animals">
+		<map>
+			<entry key="Heavy" value-ref="elephant"></entry>
+			<entry key="Light" value-ref="snake"></entry>
+			<entry key="Moderate" value-ref="lion"></entry>
+		</map>
+	</property>
+	</bean>
+
+
+
+
+	<bean id="elephant" class="com.cave.part3.Animal">
+		<property name="name" value="karishma"></property>
+		<property name="type" value="elephant"></property>
+	</bean>
+	
+	<bean id="lion" class="com.cave.part3.Animal">
+		<property name="name" value="karthik"></property>
+		<property name="type" value="lion"></property>
+	</bean>
+	
+	
+	<bean id="snake" class="com.cave.part3.Animal">
+		<property name="name" value="phani"></property>
+		<property name="type" value="snake"></property>
+	</bean>
+</beans>

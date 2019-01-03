@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	default-init-method="myInit" default-destroy-method="myFinish"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+
+	<bean id="triangle" class="com.javabrains.core.Triangle" >
+		<property name="pointA">
+			<ref bean="pointA" />
+		</property>
+		<property name="pointB">
+			<ref bean="pointB" />
+		</property>
+		<property name="pointC">
+			<ref bean="pointC" />
+		</property>
+	</bean>
+	
+	<!-- <bean id="circle" class="com.javabrains.core.Circle" >
+	</bean> -->
+
+
+
+	<bean id="pointA" class="com.javabrains.core.Point" primary="true">
+		<property name="x" value="${pointA.X}" />
+		<property name="y" value="${pointA.Y}" />
+	</bean>
+
+	<bean id="pointB" class="com.javabrains.core.Point">
+		<property name="x" value="-10" />
+		<property name="y" value="-10" />
+	</bean>
+
+	<bean id="pointC" class="com.javabrains.core.Point">
+		<property name="x" value="10" />
+		<property name="y" value="10" />
+	</bean>
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="pointsconfig.properties"></property>
+	</bean>
+
+	<bean class="com.javabrains.core.DisplayNameBeanPostProcessor"></bean>
+	<bean class="com.javabrains.core.MyBeanFactoryPostProcessor"></bean>
+	
+	<!-- <bean class="com.javabrains.core.RequiredAnnotationBeanPostProcessor"></bean> -->
+
+	<!--  <context:component-scan base-package="com.javabrains.core"></context:component-scan>
+	<context:annotation-config></context:annotation-config> -->
+</beans>
